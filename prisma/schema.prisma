@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Clinic {
+  id            String          @id @default(uuid())
+  name          String
+  subdomain     String          @unique
+  address       String?
+  phone         String?
+  email         String?
+  logo          String?
+  hours         String?         // JSON string representing clinic hours
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  
+  users         User[]
+  patients      Patient[]
+  conversations Conversation[]
+  appointments  Appointment[]
+  services      Service[]
+  doctors       Doctor[]
+  knowledgeBase KnowledgeEntry[]
+  automations   Automation[]
+  analytics     Analytics[]
+  auditLogs     AuditLog[]
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  role      String   // "ADMIN", "STAFF"
+  clinicId  String
+  clinic    Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model Patient {
+  id            String        @id @default(uuid())
+  name          String
+  email         String?
+  phone         String?
+  insurance     String?
+  notes         String?
+  clinicId      String
+  clinic        Clinic        @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  
+  appointments  Appointment[]
+  conversations Conversation[]
+}
+
+model Conversation {
+  id          String    @id @default(uuid())
+  clinicId    String
+  clinic      Clinic    @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  patientId   String?
+  patient     Patient?  @relation(fields: [patientId], references: [id], onDelete: SetNull)
+  status      String    @default("ACTIVE") // "ACTIVE", "HANDOFF_REQUESTED", "COMPLETED"
+  summary     String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  messages    Message[]
+}
+
+model Message {
+  id             String       @id @default(uuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender         String       // "PATIENT", "AI", "HUMAN"
+  content        String
+  createdAt      DateTime     @default(now())
+}
+
+model Doctor {
+  id           String        @id @default(uuid())
+  name         String
+  specialty    String
+  availability String        // JSON string mapping days to available hours
+  clinicId     String
+  clinic       Clinic        @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  createdAt    DateTime      @default(now())
+  
+  appointments Appointment[]
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  name        String
+  price       Float
+  durationMin Int      @default(30)
+  clinicId    String
+  clinic      Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  
+  appointments Appointment[]
+}
+
+model Appointment {
+  id          String      @id @default(uuid())
+  clinicId    String
+  clinic      Clinic      @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  patientId   String
+  patient     Patient     @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  serviceId   String
+  service     Service     @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  doctorId    String
+  doctor      Doctor      @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  dateTime    DateTime
+  status      String      @default("PENDING") // "PENDING", "CONFIRMED", "CANCELLED", "COMPLETED"
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model KnowledgeEntry {
+  id        String   @id @default(uuid())
+  clinicId  String
+  clinic    Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  category  String   // "FAQ", "POLICY", "PRICING", "GENERAL"
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+}
+
+model Automation {
+  id          String   @id @default(uuid())
+  clinicId    String
+  clinic      Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  type        String   // "CONFIRMATION", "REMINDER_24H", "FOLLOW_UP"
+  channel     String   // "SMS", "EMAIL"
+  template    String   // Template body with placeholders like {patient_name}
+  enabled     Boolean  @default(true)
+  logs        AutomationLog[]
+}
+
+model AutomationLog {
+  id           String     @id @default(uuid())
+  automationId String
+  automation   Automation @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  recipient    String     // Phone or email
+  content      String
+  status       String     // "SENT", "FAILED"
+  sentAt       DateTime   @default(now())
+}
+
+model Analytics {
+  id             String   @id @default(uuid())
+  clinicId       String
+  clinic         Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  date           DateTime @default(now())
+  conversations  Int      @default(0)
+  bookings       Int      @default(0)
+  leads          Int      @default(0)
+  revenueEst     Float    @default(0.0)
+  missedCallsSaved Int    @default(0)
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  clinicId  String
+  clinic    Clinic   @relation(fields: [clinicId], references: [id], onDelete: Cascade)
+  action    String   // e.g. "USER_LOGIN", "APPOINTMENT_CREATE"
+  details   String
+  createdAt DateTime @default(now())
+}
