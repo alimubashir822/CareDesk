@@ -75,7 +75,7 @@ export default function DemoSandbox() {
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950 font-sans text-white">
       {/* Sandbox Header Bar */}
-      <header className="flex h-14 items-center justify-between border-b border-zinc-900 bg-zinc-900/60 px-6 backdrop-blur-md">
+      <header className="flex h-14 items-center justify-between border-b border-zinc-900 bg-zinc-900/60 px-4 sm:px-6 backdrop-blur-md">
         <div className="flex items-center space-x-4">
           <Link href="/" className="flex items-center space-x-2 text-zinc-400 hover:text-white transition-colors text-sm">
             <ArrowLeft className="h-4 w-4" />
@@ -359,7 +359,7 @@ export default function DemoSandbox() {
       {/* Selected Conversation Transcript Inspect Modal */}
       {selectedConversation && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="flex flex-col w-full max-w-lg h-[450px] rounded-xl border border-zinc-850 bg-zinc-900 text-left overflow-hidden">
+          <div className="flex flex-col w-full max-w-lg h-[450px] max-h-[85vh] rounded-xl border border-zinc-850 bg-zinc-900 text-left overflow-hidden">
             <div className="flex items-center justify-between bg-zinc-950 px-4 py-3 border-b border-zinc-800">
               <h3 className="text-sm font-bold text-white">
                 Transcript for {selectedConversation.patient?.name || 'Inbound Web Visitor'}

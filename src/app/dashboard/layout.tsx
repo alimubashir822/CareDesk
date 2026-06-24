@@ -134,11 +134,17 @@ export default function DashboardLayout({
         </header>
 
         {isOpen && (
-          <div className="fixed inset-0 z-40 flex bg-black/60 backdrop-blur-sm md:hidden">
-            <div className="flex flex-col w-64 bg-zinc-950 h-full border-r border-zinc-900">
+          <div 
+            className="fixed inset-0 z-40 flex bg-black/60 backdrop-blur-sm md:hidden"
+            onClick={() => setIsOpen(false)}
+          >
+            <div 
+              className="flex flex-col w-64 bg-zinc-950 h-full border-r border-zinc-900 animate-in slide-in-from-left duration-200"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="flex h-16 items-center px-6 border-b border-zinc-900 justify-between">
                 <span className="font-bold text-white">Menu Navigation</span>
-                <button onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white">
+                <button onClick={() => setIsOpen(false)} className="text-zinc-400 hover:text-white" aria-label="Close Menu">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -190,7 +196,7 @@ export default function DashboardLayout({
 
       {/* Main page content area */}
       <main className="flex-1 flex flex-col overflow-y-auto bg-zinc-950 focus:outline-none">
-        <div className="flex-1 py-8 px-6 sm:px-10 max-w-7xl mx-auto w-full">
+        <div className="flex-1 py-6 px-4 sm:py-8 sm:px-6 md:px-10 max-w-7xl mx-auto w-full">
           {children}
         </div>
       </main>

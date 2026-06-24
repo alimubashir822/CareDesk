@@ -102,7 +102,7 @@ export default function VoicePage() {
       </div>
 
       {/* AI Voice Receptionist Analytics Dashboard */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
         <div className="rounded-xl border border-zinc-900 bg-zinc-900/40 p-5 flex items-center justify-between text-left">
           <div>
             <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">Calls Today</span>

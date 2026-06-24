@@ -120,7 +120,7 @@ export default function ChatWidget({ clinicSubdomain = 'smile-dental' }: { clini
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 font-sans">
       {/* Floating launcher button */}
       {!isOpen && (
         <button
@@ -133,7 +133,7 @@ export default function ChatWidget({ clinicSubdomain = 'smile-dental' }: { clini
 
       {/* Chat window panel */}
       {isOpen && (
-        <div className="flex flex-col w-[360px] sm:w-[380px] h-[520px] rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl overflow-hidden transition-all duration-300 ease-out">
+        <div className="flex flex-col w-[calc(100vw-32px)] sm:w-[380px] h-[520px] rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl overflow-hidden transition-all duration-300 ease-out">
           {/* Header */}
           <div className="flex items-center justify-between bg-zinc-900 px-4 py-3 border-b border-zinc-800">
             <div className="flex items-center space-x-2.5 text-left">

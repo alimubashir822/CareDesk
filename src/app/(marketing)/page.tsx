@@ -63,29 +63,29 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="mx-auto max-w-7xl px-6 pt-20 pb-24 sm:pt-32 lg:px-8 lg:pt-40">
+      <section className="mx-auto max-w-7xl px-6 pt-16 pb-20 sm:pt-24 lg:px-8 lg:pt-36">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center space-x-2 rounded-full bg-teal-500/10 px-3 py-1 text-sm font-semibold leading-6 text-teal-400 ring-1 ring-inset ring-teal-500/20 mb-6">
+          <div className="inline-flex items-center space-x-2 rounded-full bg-teal-500/10 px-3 py-1 text-xs sm:text-sm font-semibold leading-6 text-teal-400 ring-1 ring-inset ring-teal-500/20 mb-6">
             <span>CareDesk V1 Release</span>
             <Activity className="h-4 w-4 text-teal-400 animate-pulse" />
           </div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-400">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-white via-zinc-100 to-zinc-400">
             AI Front Desk Operating System for Clinics
           </h1>
           <p className="mt-6 text-lg leading-8 text-zinc-400 max-w-2xl mx-auto">
             Stop losing patients to missed calls. CareDesk is an AI Healthcare Employee Platform that manages the complete patient journey from first website contact to booking and automated follow-up.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Link
               href="/demo"
-              className="flex items-center space-x-2 rounded-lg bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-teal-500/20 transition-all hover:bg-teal-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/30"
+              className="w-full sm:w-auto flex items-center justify-center space-x-2 rounded-lg bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-teal-500/20 transition-all hover:bg-teal-500 hover:scale-[1.02] hover:shadow-xl hover:shadow-teal-500/30"
             >
               <span>Try AI Assistant</span>
               <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               href="/pricing"
-              className="text-sm font-semibold leading-6 text-zinc-300 hover:text-white transition-colors"
+              className="text-sm font-semibold leading-6 text-zinc-300 hover:text-white transition-colors py-2"
             >
               View Pricing <span aria-hidden="true">→</span>
             </Link>
@@ -106,7 +106,7 @@ export default function HomePage() {
               <span className="text-xs font-medium text-teal-400 bg-teal-500/10 border border-teal-500/20 px-2.5 py-0.5 rounded-full">Active Transcripts</span>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-left">
               {/* Chat Simulation Display */}
               <div className="space-y-4 rounded-lg bg-zinc-900/50 border border-zinc-800 p-4 font-sans">
                 <div className="text-xs text-zinc-500 font-mono">CLIENT-FACING CHAT WIDGET</div>
@@ -174,8 +174,8 @@ export default function HomePage() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="mx-auto max-w-7xl px-6 py-24 border-t border-zinc-900 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+      <section className="mx-auto max-w-7xl px-6 py-16 sm:py-24 border-t border-zinc-900 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Why Clinics Lose Patients and Revenue Every Day
           </h2>
@@ -197,17 +197,17 @@ export default function HomePage() {
       </section>
 
       {/* Core Features & Value Prop */}
-      <section className="mx-auto max-w-7xl px-6 py-24 border-t border-zinc-900 lg:px-8 bg-zinc-900/10">
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <section className="mx-auto max-w-7xl px-6 py-16 sm:py-24 border-t border-zinc-900 lg:px-8 bg-zinc-900/10">
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-4xl">
             Orchestrate the Complete Patient Journey
           </h2>
-          <p className="mt-4 text-base text-zinc-400">
+          <p className="mt-4 text-sm sm:text-base text-zinc-400">
             CareDesk doesn't just reply to messages—it connects to your calendar, qualifies insurance, and automates reminders and follow-ups to bring patients back.
           </p>
         </div>
         
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {valueProps.map((prop, index) => (
             <div key={index} className="flex flex-col rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-left hover:border-zinc-700 transition-colors">
               <div className="mb-4">{prop.icon}</div>
@@ -218,8 +218,8 @@ export default function HomePage() {
         </div>
 
         {/* Dynamic ROI Feature Callout */}
-        <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-r from-teal-950/40 to-zinc-900 border border-teal-500/20 p-8 md:p-12 text-left">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-gradient-to-r from-teal-950/40 to-zinc-900 border border-teal-500/20 p-6 sm:p-8 md:p-12 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
               <span className="text-teal-400 font-semibold text-sm uppercase tracking-wider">ROI CALCULATION</span>
               <h3 className="text-2xl font-bold text-white mt-2">How much does answering 24/7 make you?</h3>
@@ -263,8 +263,8 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="mx-auto max-w-7xl px-6 py-24 border-t border-zinc-900 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-16">
+      <section className="mx-auto max-w-7xl px-6 py-16 sm:py-24 border-t border-zinc-900 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Trusted by Top Dental & Healthcare Groups
           </h2>
@@ -303,24 +303,24 @@ export default function HomePage() {
       </section>
 
       {/* Bottom CTA Banner */}
-      <section className="relative isolate overflow-hidden bg-zinc-950 border-t border-zinc-900 py-24 sm:py-32">
+      <section className="relative isolate overflow-hidden bg-zinc-950 border-t border-zinc-900 py-16 sm:py-24 lg:py-32">
         <div className="mx-auto max-w-4xl px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-white sm:text-4xl">
             Hire Your AI Medical Receptionist Today
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-zinc-400">
+          <p className="mx-auto mt-6 max-w-xl text-sm sm:text-lg leading-relaxed text-zinc-400">
             Set up CareDesk for your clinic in under 15 minutes. Connect to your scheduling software and watch bookings arrive automatically.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Link
               href="/demo"
-              className="rounded-lg bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-teal-500/20 hover:bg-teal-500 transition-all hover:scale-[1.02]"
+              className="w-full sm:w-auto flex items-center justify-center rounded-lg bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-teal-500/20 hover:bg-teal-500 transition-all hover:scale-[1.02]"
             >
               Test Assistant Sandbox
             </Link>
             <Link
               href="/pricing"
-              className="text-sm font-semibold leading-6 text-zinc-300 hover:text-white"
+              className="text-sm font-semibold leading-6 text-zinc-300 hover:text-white py-2"
             >
               View pricing plans <span aria-hidden="true">→</span>
             </Link>

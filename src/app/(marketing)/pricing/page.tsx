@@ -56,26 +56,26 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="bg-zinc-950 py-24 sm:py-32">
+    <div className="bg-zinc-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Sleek Pricing for Clinics of All Sizes
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-sm sm:text-lg leading-relaxed text-zinc-400">
             Generate more appointments, save hundreds of receptionist hours, and capture every lead. Cancel or adjust your plan at any time.
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {plans.map((plan, index) => (
             <div 
               key={index} 
               className={`relative flex flex-col rounded-2xl p-8 bg-zinc-900/40 border text-left ${
                 plan.popular 
-                  ? 'border-teal-500 shadow-xl shadow-teal-500/10 md:scale-[1.03] z-10' 
+                  ? 'border-teal-500 shadow-xl shadow-teal-500/10 lg:scale-[1.03] z-10' 
                   : 'border-zinc-800'
               }`}
             >

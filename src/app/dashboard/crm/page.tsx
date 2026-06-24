@@ -155,80 +155,122 @@ export default function CRMPage() {
           <RefreshCw className="h-6 w-6 animate-spin mr-2" /> Loading CRM datasets...
         </div>
       ) : (
-        <div className="rounded-xl border border-zinc-900 bg-zinc-950 overflow-x-auto shadow-xl">
-          <table className="w-full text-xs text-zinc-300">
-            <thead className="bg-zinc-900/40 text-zinc-400 font-semibold border-b border-zinc-900">
-              <tr>
-                <th className="px-6 py-3.5 text-left">Name</th>
-                <th className="px-6 py-3.5 text-left">Contact Info</th>
-                <th className="px-6 py-3.5 text-left">Insurance</th>
-                <th className="px-6 py-3.5 text-left">AI Lead Score</th>
-                <th className="px-6 py-3.5 text-left">Created Date</th>
-                <th className="px-6 py-3.5 text-left">Next/Last Booking</th>
-                <th className="px-6 py-3.5 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-zinc-900">
-              {filteredPatients.length === 0 ? (
-                <tr>
-                  <td colSpan={6} className="px-6 py-10 text-center text-zinc-500">
-                    No patient records matching search.
-                  </td>
-                </tr>
-              ) : (
-                filteredPatients.map((pat) => {
-                  const created = new Date(pat.createdAt).toLocaleDateString();
-                  const nextAppt = pat.appointments[0];
-                  const apptStr = nextAppt 
-                    ? new Date(nextAppt.dateTime).toLocaleDateString()
-                    : 'No bookings';
+        <div className="space-y-4">
+          {/* Mobile Card Layout */}
+          <div className="block sm:hidden space-y-4">
+            {filteredPatients.length === 0 ? (
+              <div className="rounded-xl border border-zinc-900 bg-zinc-950 p-8 text-center text-zinc-500 text-xs">
+                No patient records matching search.
+              </div>
+            ) : (
+              filteredPatients.map((pat) => (
+                <div key={pat.id} className="rounded-xl border border-zinc-900 bg-zinc-900/40 p-4 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-white text-sm">{pat.name}</span>
+                    <span className={`rounded border px-2 py-0.5 text-[9px] font-bold ${getLeadScore(pat).color}`}>
+                      {getLeadScore(pat).score}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-zinc-400 space-y-1">
+                    <div><strong>Phone:</strong> {pat.phone}</div>
+                    <div><strong>Email:</strong> {pat.email || 'N/A'}</div>
+                    <div><strong>Insurance:</strong> {pat.insurance || 'Self-pay'}</div>
+                    <div>
+                      <strong>Next Booking:</strong>{' '}
+                      <span className={pat.appointments[0] ? 'text-teal-400 font-semibold' : 'text-zinc-500'}>
+                        {pat.appointments[0] ? new Date(pat.appointments[0].dateTime).toLocaleDateString() : 'No bookings'}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="pt-2 border-t border-zinc-900 flex justify-end">
+                    <button
+                      onClick={() => handleSelectPatient(pat)}
+                      className="rounded bg-zinc-900 border border-zinc-800 px-3.5 py-1.5 text-xs font-semibold text-zinc-300 hover:text-white"
+                    >
+                      View Profile
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
 
-                  return (
-                    <tr key={pat.id} className="hover:bg-zinc-900/30 transition-colors">
-                      <td className="px-6 py-4 font-semibold text-white whitespace-nowrap">{pat.name}</td>
-                      <td className="px-6 py-4">
-                        <div className="space-y-0.5">
-                          <span className="block text-[11px] text-zinc-400">{pat.phone}</span>
-                          <span className="block text-[10px] text-zinc-500">{pat.email || 'N/A'}</span>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="rounded bg-teal-500/10 border border-teal-500/20 px-2 py-0.5 text-[10px] text-teal-400 font-medium">
-                          {pat.insurance || 'Self-pay'}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`rounded border px-2 py-0.5 text-[10px] font-bold ${getLeadScore(pat).color}`}>
-                          {getLeadScore(pat).score}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">{created}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={nextAppt ? 'text-teal-400 font-semibold' : 'text-zinc-500'}>
-                          {apptStr}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-right whitespace-nowrap">
-                        <button
-                          onClick={() => handleSelectPatient(pat)}
-                          className="rounded bg-zinc-900 border border-zinc-800 px-3.5 py-1 text-[11px] font-semibold text-zinc-300 hover:text-white hover:bg-zinc-800 transition-colors"
-                        >
-                          View Profile
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })
-              )}
-            </tbody>
-          </table>
+          {/* Desktop Table View */}
+          <div className="hidden sm:block rounded-xl border border-zinc-900 bg-zinc-950 overflow-x-auto shadow-xl">
+            <table className="w-full text-xs text-zinc-300">
+              <thead className="bg-zinc-900/40 text-zinc-400 font-semibold border-b border-zinc-900">
+                <tr>
+                  <th className="px-6 py-3.5 text-left">Name</th>
+                  <th className="px-6 py-3.5 text-left">Contact Info</th>
+                  <th className="px-6 py-3.5 text-left">Insurance</th>
+                  <th className="px-6 py-3.5 text-left">AI Lead Score</th>
+                  <th className="px-6 py-3.5 text-left">Created Date</th>
+                  <th className="px-6 py-3.5 text-left">Next/Last Booking</th>
+                  <th className="px-6 py-3.5 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-900">
+                {filteredPatients.length === 0 ? (
+                  <tr>
+                    <td colSpan={7} className="px-6 py-10 text-center text-zinc-500">
+                      No patient records matching search.
+                    </td>
+                  </tr>
+                ) : (
+                  filteredPatients.map((pat) => {
+                    const created = new Date(pat.createdAt).toLocaleDateString();
+                    const nextAppt = pat.appointments[0];
+                    const apptStr = nextAppt 
+                      ? new Date(nextAppt.dateTime).toLocaleDateString()
+                      : 'No bookings';
+
+                    return (
+                      <tr key={pat.id} className="hover:bg-zinc-900/30 transition-colors">
+                        <td className="px-6 py-4 font-semibold text-white whitespace-nowrap">{pat.name}</td>
+                        <td className="px-6 py-4">
+                          <div className="space-y-0.5">
+                            <span className="block text-[11px] text-zinc-400">{pat.phone}</span>
+                            <span className="block text-[10px] text-zinc-500">{pat.email || 'N/A'}</span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className="rounded bg-teal-500/10 border border-teal-500/20 px-2 py-0.5 text-[10px] text-teal-400 font-medium">
+                            {pat.insurance || 'Self-pay'}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className={`rounded border px-2 py-0.5 text-[10px] font-bold ${getLeadScore(pat).color}`}>
+                            {getLeadScore(pat).score}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">{created}</td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <span className={nextAppt ? 'text-teal-400 font-semibold' : 'text-zinc-500'}>
+                            {apptStr}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4 text-right whitespace-nowrap">
+                          <button
+                            onClick={() => handleSelectPatient(pat)}
+                            className="rounded bg-zinc-900 border border-zinc-800 px-3.5 py-1 text-[11px] font-semibold text-zinc-300 hover:text-white hover:bg-zinc-800 transition-colors"
+                          >
+                            View Profile
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
 
       {/* Patient Profile Modal Detail */}
       {selectedPatient && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="flex flex-col w-full max-w-2xl h-[550px] rounded-xl border border-zinc-850 bg-zinc-900 overflow-hidden text-left shadow-2xl">
+          <div className="flex flex-col w-full max-w-2xl h-[550px] max-h-[90vh] rounded-xl border border-zinc-850 bg-zinc-900 overflow-hidden text-left shadow-2xl">
             {/* Modal Header */}
             <div className="flex items-center justify-between bg-zinc-950 px-6 py-4 border-b border-zinc-800">
               <div className="flex items-center space-x-3">

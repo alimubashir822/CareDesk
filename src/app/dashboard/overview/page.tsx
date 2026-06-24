@@ -159,14 +159,14 @@ export default function OverviewPage() {
       {/* Stats Cards Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {crmStats.map((stat, idx) => (
-          <div key={idx} className={`rounded-xl border bg-zinc-900/60 p-5 ${stat.color} hover:border-zinc-800 transition-colors`}>
+          <div key={idx} className={`rounded-xl border bg-zinc-900/60 p-4 sm:p-5 ${stat.color} hover:border-zinc-800 transition-colors`}>
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{stat.label}</span>
               <div className="rounded p-1.5 bg-teal-500/10 border border-teal-500/20">
                 {stat.icon}
               </div>
             </div>
-            <div className="text-3xl font-extrabold text-white mt-3">{stat.value}</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-white mt-3">{stat.value}</div>
             <div className="text-[10px] text-zinc-500 mt-1.5 flex items-center">
               <TrendingUp className="h-3 w-3 text-emerald-400 mr-1" />
               <span>Target metrics reached</span>
@@ -413,7 +413,7 @@ export default function OverviewPage() {
       {/* Transcript Detail Drawer Modal */}
       {selectedConv && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="flex flex-col w-full max-w-lg h-[450px] rounded-xl border border-zinc-850 bg-zinc-900 text-left overflow-hidden">
+          <div className="flex flex-col w-full max-w-lg h-[450px] max-h-[85vh] rounded-xl border border-zinc-850 bg-zinc-900 text-left overflow-hidden">
             <div className="flex items-center justify-between bg-zinc-950 px-4 py-3 border-b border-zinc-800">
               <h3 className="text-sm font-bold text-white">
                 Transcript: {selectedConv.patient?.name || 'Inbound Web Visitor'}

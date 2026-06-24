@@ -42,20 +42,20 @@ export default function IntegrationsPage() {
   ];
 
   return (
-    <div className="bg-zinc-950 py-24 sm:py-32">
+    <div className="bg-zinc-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-20">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Integrates Directly into Your Clinic Workflows
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-sm sm:text-lg leading-relaxed text-zinc-400">
             CareDesk AI doesn't require you to swap software. Connect your existing CRM, schedule coordinators, and messaging channels in seconds.
           </p>
         </div>
 
         {/* Integration list */}
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
           {integrations.map((integ, index) => (
             <div key={index} className="rounded-xl border border-zinc-900 bg-zinc-900/10 p-6 flex flex-col justify-between hover:border-zinc-800 transition-colors">
               <div>

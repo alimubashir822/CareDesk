@@ -56,20 +56,20 @@ export default function FeaturesPage() {
   ];
 
   return (
-    <div className="bg-zinc-950 py-24 sm:py-32">
+    <div className="bg-zinc-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-20">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             A Complete Administrative Team, Engineered into AI
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-sm sm:text-lg leading-relaxed text-zinc-400">
             CareDesk provides full-circle support for the patient journey: from visiting your website, answering questions, and scheduling cleanings to sending SMS reminders.
           </p>
         </div>
 
         {/* Feature Grid */}
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
           {coreFeatures.map((feat, index) => (
             <div key={index} className="flex gap-5 rounded-xl border border-zinc-900 bg-zinc-900/10 p-8 hover:border-zinc-800 transition-all">
               <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-lg bg-teal-500/10 border border-teal-500/20">

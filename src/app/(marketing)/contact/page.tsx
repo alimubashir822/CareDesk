@@ -2,20 +2,20 @@ import { Mail, Phone, MapPin, ShieldCheck, Activity } from 'lucide-react';
 
 export default function ContactPage() {
   return (
-    <div className="bg-zinc-950 py-24 sm:py-32">
+    <div className="bg-zinc-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-16">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Let's Set Up Your AI Clinic Employee
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-sm sm:text-lg leading-relaxed text-zinc-400">
             Have questions about calendar integrations, security, or setting up a custom database? Contact our healthcare solutions team.
           </p>
         </div>
 
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           {/* Info Side */}
-          <div className="flex flex-col justify-between rounded-xl border border-zinc-900 bg-zinc-900/10 p-8 text-left">
+          <div className="flex flex-col justify-between rounded-xl border border-zinc-900 bg-zinc-900/10 p-6 sm:p-8 text-left">
             <div className="space-y-8">
               <h2 className="text-xl font-bold text-white">Contact Information</h2>
               
@@ -61,7 +61,7 @@ export default function ContactPage() {
           </div>
 
           {/* Form Side */}
-          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-8 text-left">
+          <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-8 text-left">
             <h2 className="text-xl font-bold text-white mb-6">Request Callback or Quote</h2>
             
             <form className="space-y-4">
@@ -70,17 +70,17 @@ export default function ContactPage() {
                 <input 
                   type="text" 
                   placeholder="e.g. Smile Dental Clinic" 
-                  className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
+                  className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-650 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-medium text-zinc-400 uppercase tracking-wider mb-2">Contact Name</label>
                   <input 
                     type="text" 
                     placeholder="e.g. Dr. Sarah" 
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-650 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
                   />
                 </div>
                 <div>
@@ -88,7 +88,7 @@ export default function ContactPage() {
                   <input 
                     type="text" 
                     placeholder="e.g. (555) 123-4567" 
-                    className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-600 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
+                    className="w-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-2.5 text-sm text-white placeholder-zinc-650 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500" 
                   />
                 </div>
               </div>

@@ -150,7 +150,7 @@ export default function SettingsPage() {
                 {/* Theme Color selectors */}
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-2">Primary Branding Color</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {colors.map((c) => (
                       <button
                         key={c.id}
@@ -172,7 +172,7 @@ export default function SettingsPage() {
                 {/* Avatar select */}
                 <div>
                   <label className="block text-[10px] font-bold text-zinc-500 uppercase mb-2">Avatar Representation</label>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {avatars.map((a) => (
                       <button
                         key={a.id}

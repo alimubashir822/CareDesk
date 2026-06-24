@@ -30,20 +30,20 @@ export default function IndustriesPage() {
   ];
 
   return (
-    <div className="bg-zinc-950 py-24 sm:py-32">
+    <div className="bg-zinc-950 py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center mb-20">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+        <div className="mx-auto max-w-3xl text-center mb-16 sm:mb-20">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Built for the Needs of Modern Healthcare
           </h1>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
+          <p className="mt-6 text-sm sm:text-lg leading-relaxed text-zinc-400">
             CareDesk AI matches your clinical workflows. Our AI agent is trained to handle terminology, policies, and booking intents across different medical specialties.
           </p>
         </div>
 
         {/* Industries Grid */}
-        <div className="mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+        <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 gap-8 text-left">
           {industries.map((ind, index) => (
             <div key={index} className="flex flex-col justify-between rounded-xl border border-zinc-900 bg-zinc-900/20 p-8 hover:border-zinc-800 transition-colors">
               <div>

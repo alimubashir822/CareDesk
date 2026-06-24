@@ -197,10 +197,10 @@ export default function KnowledgePage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-zinc-900 space-x-6">
+      <div className="flex border-b border-zinc-900 space-x-6 overflow-x-auto hide-scrollbar whitespace-nowrap">
         <button
           onClick={() => setActiveTab('faqs')}
-          className={`pb-3 text-xs font-semibold border-b-2 transition-colors ${
+          className={`pb-3 text-xs font-semibold border-b-2 transition-colors flex-shrink-0 ${
             activeTab === 'faqs' ? 'border-teal-500 text-teal-400' : 'border-transparent text-zinc-400 hover:text-white'
           }`}
         >
@@ -208,7 +208,7 @@ export default function KnowledgePage() {
         </button>
         <button
           onClick={() => setActiveTab('services')}
-          className={`pb-3 text-xs font-semibold border-b-2 transition-colors ${
+          className={`pb-3 text-xs font-semibold border-b-2 transition-colors flex-shrink-0 ${
             activeTab === 'services' ? 'border-teal-500 text-teal-400' : 'border-transparent text-zinc-400 hover:text-white'
           }`}
         >
@@ -216,7 +216,7 @@ export default function KnowledgePage() {
         </button>
         <button
           onClick={() => setActiveTab('doctors')}
-          className={`pb-3 text-xs font-semibold border-b-2 transition-colors ${
+          className={`pb-3 text-xs font-semibold border-b-2 transition-colors flex-shrink-0 ${
             activeTab === 'doctors' ? 'border-teal-500 text-teal-400' : 'border-transparent text-zinc-400 hover:text-white'
           }`}
         >

@@ -11,7 +11,8 @@ import {
   Activity, 
   ShieldAlert, 
   RefreshCw,
-  Clock
+  Clock,
+  ArrowLeft
 } from 'lucide-react';
 
 export default function ConversationsPage() {
@@ -109,10 +110,10 @@ export default function ConversationsPage() {
           <RefreshCw className="h-6 w-6 animate-spin mr-2" /> Loading conversations log...
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[600px] items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[550px] md:h-[600px] items-stretch">
           
           {/* LEFT COLUMN: List of Conversations */}
-          <div className="md:col-span-1 rounded-xl border border-zinc-900 bg-zinc-950 flex flex-col overflow-hidden">
+          <div className={`${selectedConv ? 'hidden md:flex' : 'flex'} md:col-span-1 rounded-xl border border-zinc-900 bg-zinc-950 flex flex-col overflow-hidden`}>
             <div className="p-4 border-b border-zinc-900 bg-zinc-900/40">
               <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block">Conversations List</span>
             </div>
@@ -174,18 +175,27 @@ export default function ConversationsPage() {
           </div>
 
           {/* RIGHT COLUMN: Selected Conversation Transcript & Takeover Panel */}
-          <div className="md:col-span-2 rounded-xl border border-zinc-900 bg-zinc-950 flex flex-col overflow-hidden">
+          <div className={`${selectedConv ? 'flex' : 'hidden md:flex'} md:col-span-2 rounded-xl border border-zinc-900 bg-zinc-950 flex flex-col overflow-hidden`}>
             {selectedConv ? (
               <div className="flex-1 flex flex-col overflow-hidden">
                 {/* Transcript Header */}
                 <div className="p-4 border-b border-zinc-900 bg-zinc-900/20 flex items-center justify-between">
-                  <div>
-                    <h3 className="text-sm font-bold text-white">
-                      {selectedConv.patient?.name || 'Inbound Web Visitor'}
-                    </h3>
-                    <p className="text-[10px] text-zinc-500 mt-0.5">
-                      Session ID: <span className="font-mono text-[9px]">{selectedConv.id.slice(0, 8)}</span>
-                    </p>
+                  <div className="flex items-center space-x-3">
+                    <button
+                      onClick={() => setSelectedConv(null)}
+                      className="flex md:hidden items-center justify-center p-2 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 hover:text-white"
+                      aria-label="Back to List"
+                    >
+                      <ArrowLeft className="h-4 w-4" />
+                    </button>
+                    <div>
+                      <h3 className="text-sm font-bold text-white">
+                        {selectedConv.patient?.name || 'Inbound Web Visitor'}
+                      </h3>
+                      <p className="text-[10px] text-zinc-500 mt-0.5">
+                        Session ID: <span className="font-mono text-[9px]">{selectedConv.id.slice(0, 8)}</span>
+                      </p>
+                    </div>
                   </div>
                   
                   <div className="flex items-center space-x-2">
